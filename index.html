@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI駆動開発ハンズオン ハンドアウト | 2026-08-17 定例活動</title>
-<meta name="description" content="Claude Code を使って、チームで動くものを1つ作る。当日の流れ・Webのしくみ・アイデアの出し方・セットアップ・APIと課金・チーム開発の作法をまとめたハンドアウト">
+<meta name="description" content="Claude Code を使って、チームで動くものを1つ作る。当日の流れ・Webのしくみ・APIと課金・アイデアの出し方・セットアップ・チーム開発の作法をまとめたハンドアウト">
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>">
 <link rel="stylesheet" href="assets/style.css">
@@ -20,7 +20,8 @@
 
 <nav class="tabs" role="tablist" aria-label="ハンドアウトの目次">
   <button type="button" role="tab" id="tab-flow" data-tab="flow" aria-controls="panel-flow" aria-selected="true">今日の流れ</button>
-  <button type="button" role="tab" id="tab-basics" data-tab="basics" aria-controls="panel-basics" aria-selected="false">WebとAPIのしくみ</button>
+  <button type="button" role="tab" id="tab-web" data-tab="web" aria-controls="panel-web" aria-selected="false">Webのしくみ</button>
+  <button type="button" role="tab" id="tab-api" data-tab="api" aria-controls="panel-api" aria-selected="false">APIと課金</button>
   <button type="button" role="tab" id="tab-idea" data-tab="idea" aria-controls="panel-idea" aria-selected="false">アイデアの出し方</button>
   <button type="button" role="tab" id="tab-make" data-tab="make" aria-controls="panel-make" aria-selected="false">セットアップと開発</button>
   <button type="button" role="tab" id="tab-help" data-tab="help" aria-controls="panel-help" aria-selected="false">困ったら</button>
@@ -34,7 +35,7 @@
   <table>
     <tr><th class="num">時刻</th><th class="num">長さ</th><th>内容</th></tr>
     <tr><td class="num">13:00</td><td class="num">10分</td><td>イントロ — 今日のゴールとお題の発表</td></tr>
-    <tr><td class="num">13:10</td><td class="num">45分</td><td><strong><a href="#make">セットアップ</a> と 座学を並行</strong><br>インストールを走らせながら <a href="#basics">Webのしくみ</a> → <a href="#idea">アイデアの出し方</a> → <a href="#basics">APIと課金</a> を聞き、待ち時間でチームの方向性を決めます</td></tr>
+    <tr><td class="num">13:10</td><td class="num">45分</td><td><strong><a href="#make">セットアップ</a> と 座学を並行</strong><br>インストールを走らせながら <a href="#web">Webのしくみ</a> → <a href="#idea">アイデアの出し方</a> → <a href="#api">APIと課金</a> を聞き、待ち時間でチームの方向性を決めます</td></tr>
     <tr><td class="num">13:55</td><td class="num">10分</td><td><a href="#make">チーム開発の作法</a> → スタックと分担を決める</td></tr>
     <tr><td class="num">14:05</td><td class="num">55分</td><td><strong>開発(前半)</strong></td></tr>
     <tr><td class="num">15:00</td><td class="num">10分</td><td><strong>中間チェック &amp; 休憩</strong> — 各チーム1分で「今どこまで動いているか」</td></tr>
@@ -52,10 +53,10 @@
   <table>
     <tr><th class="num">経過</th><th>話す内容</th><th>手を動かすこと</th></tr>
     <tr><td class="num">0〜3分</td><td>—</td><td><a href="#make">セットアップ</a> <strong>Step 1(インストール)</strong> を走らせる</td></tr>
-    <tr><td class="num">3〜13分</td><td><a href="#basics">Webのしくみ</a> — HTML / CSS / JavaScript と URL</td><td rowspan="3">インストールを回しながら聞く。<br>終わった人は Step 2〜3(キー設定・疎通確認)へ進んでよい</td></tr>
-    <tr><td class="num">13〜28分</td><td><a href="#idea">アイデアの出し方</a> — ペルソナ / 課題 / 市場調査 / MVP</td></tr>
-    <tr><td class="num">28〜35分</td><td><a href="#basics">APIと課金</a> — キーを外に出してはいけない理由</td></tr>
-    <tr><td class="num">35〜45分</td><td>—</td><td>チームでアイデアを決める + 各自セットアップを完了させる</td></tr>
+    <tr><td class="num">3〜15分</td><td><a href="#web">Webのしくみ</a> — HTML / CSS / JS、フロント/バックエンド、URL</td><td rowspan="3">インストールを回しながら聞く。<br>終わった人は Step 2〜3(キー設定・疎通確認)へ進んでよい</td></tr>
+    <tr><td class="num">15〜30分</td><td><a href="#idea">アイデアの出し方</a> — ペルソナ / 課題 / 市場調査 / MVP</td></tr>
+    <tr><td class="num">30〜37分</td><td><a href="#api">APIと課金</a> — キーを外に出してはいけない理由</td></tr>
+    <tr><td class="num">37〜45分</td><td>—</td><td>チームでアイデアを決める + 各自セットアップを完了させる</td></tr>
   </table>
   </div>
   <p><strong>13:55 までに「アイデアが決まっている」「全員 <code>claude</code> が動く」の両方が揃っていればOKです。</strong></p>
@@ -66,8 +67,8 @@
 </section>
 </div>
 
-<!-- ============================== WebとAPIのしくみ ============================== -->
-<div role="tabpanel" id="panel-basics" aria-labelledby="tab-basics" hidden>
+<!-- ============================== Webのしくみ ============================== -->
+<div role="tabpanel" id="panel-web" aria-labelledby="tab-web" hidden>
 <section>
   <h2>Webのしくみ</h2>
 
@@ -149,6 +150,48 @@
 
   <div class="note"><b>デバッグの入口</b>思ったとおりに動かないときは、ブラウザで<strong>右クリック → 検証</strong>(または F12)を開いてください。<strong>Console</strong> タブにJavaScriptのエラーが赤字で出ています。<strong>そのエラー文をそのまま Claude Code に貼るのが一番速い直し方</strong>です。</div>
 
+  <h3>フロントエンドとバックエンド</h3>
+
+  <p>Webアプリはたいてい、<strong>手元のブラウザで動く部分</strong>と<strong>向こう側のサーバーで動く部分</strong>に分かれています。HTML / CSS / JavaScript は、このうち前者です。</p>
+
+  <div class="fb">
+    <div class="fb-side front">
+      <div class="fb-head">🖥 フロントエンド<span>= あなたのブラウザの中で動く</span></div>
+      <ul>
+        <li>HTML / CSS / JavaScript</li>
+        <li>画面の表示、ボタンの反応</li>
+        <li>入力チェック(親切のため)</li>
+      </ul>
+      <div class="fb-note">中身は誰でも見られる</div>
+    </div>
+    <div class="fb-link">
+      <span class="wire">インターネット</span>
+      <span>リクエスト →</span>
+      <span>← レスポンス</span>
+    </div>
+    <div class="fb-side back">
+      <div class="fb-head">🗄 バックエンド<span>= 向こう側のサーバーで動く</span></div>
+      <ul>
+        <li>データベース(全員ぶんのデータ)</li>
+        <li>APIキー・パスワードなどの秘密</li>
+        <li>本当の判定・計算</li>
+      </ul>
+      <div class="fb-note">中身は見えない</div>
+    </div>
+  </div>
+
+  <p><strong>この「見える / 見えない」の差がすべての出発点です。</strong> フロントエンドのコードは、ブラウザに届いた時点で全部読めます(右クリック → 検証 で誰でも中身を見られます)。だからバックエンドを分ける理由は、突き詰めると次の3つです。</p>
+
+  <ol>
+    <li><strong>秘密を置く場所がいる</strong> — APIキーやパスワードをフロントに書くと、置いた瞬間に公開されます</li>
+    <li><strong>みんなでデータを共有する</strong> — ブラウザに保存したデータは<strong>その人のそのブラウザにしか存在しません</strong>。他の人と共有するにはサーバーが要ります</li>
+    <li><strong>フロントは信用できない</strong> — ブラウザ側のコードは書き換えられます。「会員は500円」の判定をフロントだけでやると、いくらでも改ざんできます</li>
+  </ol>
+
+  <div class="note"><b>今日は「バックエンドなし」で作ります</b>データは <code>localStorage</code>(そのブラウザの中)に保存します。サーバーもデータベースも用意しないので、<strong>他の人とデータは共有されません</strong>。<br>これは手抜きではなく、85分で動くものに着地させるための設計判断です。サークルの本格的な開発ではバックエンド(Go / Python / Node など)を用意します。</div>
+
+  <div class="warn-box"><b>お題を決めるときに効いてくる話</b>「みんなで情報を出し合う」系のアイデアは、<strong>本来バックエンドがないと成立しません</strong>。今日は<strong>1台のブラウザの中でデモが成立すればOK</strong>(自分で投稿 → 一覧に出る、まで動けば成果)と割り切って設計してください。共有まで本気でやりたいなら、それは9月のハッカソンの題材です。</div>
+
   <h3>URL のしくみ</h3>
 
   <p>URL は「インターネット上のどこにある何を、どうやって取りに行くか」を1行で書いたものです。分解するとこうなっています。</p>
@@ -176,6 +219,8 @@
   <div class="note"><b>まとめ</b>
     <ul>
       <li><strong>HTML</strong> = 何があるか / <strong>CSS</strong> = どう見えるか / <strong>JavaScript</strong> = どう動くか</li>
+      <li><strong>フロントエンド</strong>(ブラウザ側)は中身が全部見える。だから秘密と共有データは<strong>バックエンド</strong>(サーバー側)に置く</li>
+      <li>今日はバックエンドなし。データは <code>localStorage</code> で、他の人とは共有されない</li>
       <li>フレームワークを使っても、<strong>ブラウザが最後に受け取るのはこの3つ</strong>。今日は直接書くだけ</li>
       <li>ブラウザは上から順に読んで実行しているだけ。今日の構成なら <code>index.html</code> を開けば動く</li>
       <li>動かないときは<strong>検証 → Console のエラーを Claude Code に貼る</strong></li>
@@ -183,7 +228,10 @@
     </ul>
   </div>
 </section>
+</div>
 
+<!-- ============================== APIと課金 ============================== -->
+<div role="tabpanel" id="panel-api" aria-labelledby="tab-api" hidden>
 <section>
   <h2>APIと課金の仕組み</h2>
 
@@ -402,6 +450,8 @@
 
   <p>右は田中さんの課題(着く前に分かりたい)をちゃんと解いています。左の機能は<strong>1つも足さなくても解ける</strong>ので、まずは作りません。</p>
 
+  <div class="warn-box"><b>ただし、本当に「みんなで共有」するにはバックエンドが要ります</b>今日は <code>localStorage</code> しか使わないので、投稿は<strong>自分のブラウザの中にしか残りません</strong>(<a href="#web">Webのしくみ</a>タブ参照)。<br>今日のゴールは<strong>1台で「投稿する → 一覧に出る」が動くこと</strong>です。そこまで動けば、あとはデータの置き場所をサーバーに替えるだけ、という状態になります。成果シェアではそう説明してください。</div>
+
   <h3>MVPに削るときの判断基準</h3>
   <ul>
     <li><strong>「これがないと課題が解決しない」機能だけ残す。</strong> 「あったら便利」は全部あとまわし</li>
@@ -450,7 +500,7 @@
     <li>そのターミナルで、下の Step 1〜3 をそのまま実行する</li>
   </ol>
 
-  <p>左のファイル一覧が Claude Code の作業に合わせて増えていくので、<a href="#basics">HTML / CSS / JS の役割</a>を実物で確認できます。<code>index.html</code> を右クリック → ブラウザで開けば、その場で動作確認もできます。</p>
+  <p>左のファイル一覧が Claude Code の作業に合わせて増えていくので、<a href="#web">HTML / CSS / JS の役割</a>を実物で確認できます。<code>index.html</code> を右クリック → ブラウザで開けば、その場で動作確認もできます。</p>
 
   <div class="warn-box"><b>Windows(WSL)の人はフォルダの開き方に注意</b>VS Code に <strong>WSL 拡張</strong>を入れ、左下の緑のボタンから <strong>「WSL への接続」→ WSL 側のフォルダを開く</strong>てください。Windows 側(<code>C:\</code> 配下)のフォルダを開くと、動作が極端に遅くなったり <code>claude</code> が見つからなかったりします。左下に <code>WSL: Ubuntu</code> と出ていれば正解です。</div>
 
@@ -511,7 +561,7 @@ claude</code></pre>
       <li>スクリーンショット・配信画面に写さない</li>
       <li>チーム外に共有しない</li>
     </ul>
-    なぜこれが大事なのかは<a href="#basics">WebとAPIのしくみ</a>タブの「APIと課金の仕組み」を読むと腑に落ちます。
+    なぜこれが大事なのかは<a href="#api">APIと課金</a>タブを読むと腑に落ちます。
   </div>
 
   <ul>
@@ -541,7 +591,7 @@ claude</code></pre>
 
   <div class="note"><b>チーム全員が Next.js に慣れている場合は使ってOK</b>その場合、下の「機能で分ける」考え方はそのまま使えます。<code>app/</code> 配下をページ / コンポーネント単位で分担してください。ただし<strong>環境構築で15分以上溶けたら素のHTMLに切り替える</strong>と最初に決めておくのがおすすめです。</div>
 
-  <div class="warn-box"><b>外部APIを使うなら</b>APIキーが必要なAPIは、フロントだけでは安全に使えません(<a href="#basics">WebとAPIのしくみ</a>タブ参照)。今日は<strong>キーの要らない公開API</strong>を選ぶか、外部APIを使わない構成にしてください。</div>
+  <div class="warn-box"><b>外部APIを使うなら</b>APIキーが必要なAPIは、フロントエンドだけでは安全に使えません(<a href="#api">APIと課金</a>タブ参照)。今日は<strong>キーの要らない公開API</strong>を選ぶか、外部APIを使わない構成にしてください。</div>
 
   <h2>コンフリクトしない作法</h2>
 
@@ -646,7 +696,7 @@ git checkout --theirs index.html   <span class="c"># 相手の版を採用</span
     <tr><td>VS Code を開き直したらキーが効かない</td><td>環境変数はターミナルを閉じると消えます。統合ターミナルでもう一度 <code>export ANTHROPIC_API_KEY="..."</code> を実行</td></tr>
     <tr><td>WSL で VS Code の動作が異常に遅い</td><td>Windows 側のフォルダを開いています。左下の緑ボタンから WSL 側のフォルダを開き直す(左下が <code>WSL: Ubuntu</code> になっていればOK)</td></tr>
     <tr><td>WSL で <code>curl: command not found</code></td><td><code>sudo apt update &amp;&amp; sudo apt install -y curl</code> を先に実行</td></tr>
-    <tr><td>応答が遅い・高い気がする</td><td>会話が長くなっているかもしれません。<code>/clear</code> で履歴をリセット(<a href="#basics">理由</a>)。<code>/cost</code> で消費を確認</td></tr>
+    <tr><td>応答が遅い・高い気がする</td><td>会話が長くなっているかもしれません。<code>/clear</code> で履歴をリセット(<a href="#api">理由</a>)。<code>/cost</code> で消費を確認</td></tr>
     <tr><td>環境構築が終わらない</td><td>フレームワークを使っている場合は、素の HTML / CSS / JS に切り替える判断を早めに</td></tr>
     <tr><td>コンフリクトが解決できない</td><td>5分かけずに <code>git merge --abort</code> で戻し、Claude Code にやり直させる</td></tr>
     <tr><td>アイデアが決まらない</td><td><a href="#idea">アイデアの出し方</a>末尾の「アイデアが出ないときの型」を回す。それでも決まらなければ運営に相談</td></tr>
