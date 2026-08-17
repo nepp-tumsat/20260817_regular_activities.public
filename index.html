@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code セットアップ手順 | 2026-08-17 定例活動</title>
+<meta name="description" content="チームに配られたAPIキーで Claude Code を使い始めるための手順(所要5分)">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<header class="doc">
+  <div class="kicker">2026-08-17 定例活動</div>
+  <h1>Claude Code セットアップ手順</h1>
+  <p class="lede">チームに配られたAPIキーで Claude Code を使えるようにします。所要5分。<br>個人で Claude Pro / Max を契約済みの人は、普段の自分のログインのまま参加してOKです(この手順は不要)。</p>
+</header>
+
+<section>
+  <div class="note"><b>作業環境</b>macOS のターミナル、または Windows の <strong>WSL</strong>(Ubuntu など)で作業します。Windows の人は <strong>PowerShell やコマンドプロンプトではなく WSL のターミナルを開いてください</strong>。WSL がまだ入っていない人は、導入に時間がかかるので<strong>当日までに済ませておいてください</strong>。</div>
+
+  <ol class="steps">
+
+    <li>
+      <h3>Claude Code をインストールする</h3>
+      <p>すでに入っている人は飛ばしてください(<code>claude --version</code> で確認できます)。</p>
+      <pre><code>curl -fsSL https://claude.ai/install.sh | bash</code></pre>
+      <p>WSL で <code>curl: command not found</code> と出たら、先に curl を入れてから再実行してください。</p>
+      <pre><code>sudo apt update &amp;&amp; sudo apt install -y curl</code></pre>
+    </li>
+
+    <li>
+      <h3>チームのAPIキーを環境変数にセットする</h3>
+      <p>チームリーダーから受け取ったキー(<code>sk-ant-api03-…</code>)を貼り付けます。</p>
+      <pre><code>export ANTHROPIC_API_KEY="sk-ant-api03-..."</code></pre>
+      <p>ターミナルを開き直すと消えるので、その場合はもう一度実行してください。</p>
+    </li>
+
+    <li>
+      <h3>起動して初期設定をする</h3>
+      <pre><code>mkdir hands-on &amp;&amp; cd hands-on
+claude</code></pre>
+      <ol>
+        <li>「このAPIキーを使用するか」と聞かれたら <strong>Yes</strong> を選ぶ</li>
+        <li><code>/model</code> と入力して <strong>Sonnet</strong> を選択(今日はSonnetで進めます)</li>
+        <li>疎通確認として軽い指示を1回:「<em>このフォルダに hello.txt を作って</em>」</li>
+      </ol>
+      <p>hello.txt ができたらセットアップ完了です 🎉</p>
+    </li>
+
+  </ol>
+</section>
+
+<section>
+  <h2>覚えておくと便利なコマンド</h2>
+  <div class="table-scroll">
+  <table>
+    <tr><th>コマンド</th><th>内容</th></tr>
+    <tr><td><code>/cost</code></td><td>このセッションで使った金額を確認</td></tr>
+    <tr><td><code>/model</code></td><td>使用モデルの切り替え</td></tr>
+    <tr><td><code>/clear</code></td><td>会話履歴をリセット(話題を大きく変えるとき)</td></tr>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2>注意事項</h2>
+
+  <div class="crit-box"><b>Consoleアカウントで「ログイン」しないでください</b>ログイン画面が出ても、Console(platform.claude.com)のアカウントでのサインインは選ばず、必ずAPIキー(環境変数)を使ってください。今日はチームに配られたキーで動かします。</div>
+
+  <div class="warn-box"><b>キーの取り扱い</b>
+    <ul>
+      <li>git にコミットしない(コード内に書かず、環境変数のままにする)</li>
+      <li>スクリーンショット・配信画面に写さない</li>
+      <li>チーム外に共有しない</li>
+    </ul>
+  </div>
+
+  <ul>
+    <li>キーは<strong>イベント終了時に失効します</strong>。持ち帰っても使えません。</li>
+    <li>途中で応答が返ってこなくなったら、運営に声をかけてください。</li>
+  </ul>
+</section>
+
+<section>
+  <h2>困ったら</h2>
+  <div class="table-scroll">
+  <table>
+    <tr><th>症状</th><th>対処</th></tr>
+    <tr><td><code>claude: command not found</code></td><td>インストール直後はパスが通っていないことがあります。ターミナルを開き直してから再実行</td></tr>
+    <tr><td>401 エラー(認証失敗)</td><td>キーの貼り間違い。前後の空白や欠けがないか確認して環境変数を再セット → <code>claude</code> を再起動</td></tr>
+    <tr><td>429 エラーが頻発</td><td>チーム内でアクセスが集中しています。少し待つか運営に連絡</td></tr>
+    <tr><td>動かない・わからない</td><td>運営に声をかけてください</td></tr>
+  </table>
+  </div>
+</section>
+
+</div>
+</body>
+</html>
