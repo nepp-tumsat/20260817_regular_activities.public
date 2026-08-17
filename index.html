@@ -20,11 +20,9 @@
 
 <nav class="tabs" role="tablist" aria-label="ハンドアウトの目次">
   <button type="button" role="tab" id="tab-flow" data-tab="flow" aria-controls="panel-flow" aria-selected="true">今日の流れ</button>
-  <button type="button" role="tab" id="tab-web" data-tab="web" aria-controls="panel-web" aria-selected="false">Webのしくみ</button>
+  <button type="button" role="tab" id="tab-basics" data-tab="basics" aria-controls="panel-basics" aria-selected="false">WebとAPIのしくみ</button>
   <button type="button" role="tab" id="tab-idea" data-tab="idea" aria-controls="panel-idea" aria-selected="false">アイデアの出し方</button>
-  <button type="button" role="tab" id="tab-setup" data-tab="setup" aria-controls="panel-setup" aria-selected="false">セットアップ</button>
-  <button type="button" role="tab" id="tab-api" data-tab="api" aria-controls="panel-api" aria-selected="false">APIと課金</button>
-  <button type="button" role="tab" id="tab-team" data-tab="team" aria-controls="panel-team" aria-selected="false">チーム開発の作法</button>
+  <button type="button" role="tab" id="tab-make" data-tab="make" aria-controls="panel-make" aria-selected="false">セットアップと開発</button>
   <button type="button" role="tab" id="tab-help" data-tab="help" aria-controls="panel-help" aria-selected="false">困ったら</button>
 </nav>
 
@@ -36,8 +34,8 @@
   <table>
     <tr><th class="num">時刻</th><th class="num">長さ</th><th>内容</th></tr>
     <tr><td class="num">13:00</td><td class="num">10分</td><td>イントロ — 今日のゴールとお題の発表</td></tr>
-    <tr><td class="num">13:10</td><td class="num">45分</td><td><strong><a href="#setup">セットアップ</a> と 座学を並行</strong><br>インストールを走らせながら <a href="#web">Webのしくみ</a> → <a href="#idea">アイデアの出し方</a> → <a href="#api">APIと課金</a> を聞き、待ち時間でチームの方向性を決めます</td></tr>
-    <tr><td class="num">13:55</td><td class="num">10分</td><td><a href="#team">チーム開発の作法</a> → スタックと分担を決める</td></tr>
+    <tr><td class="num">13:10</td><td class="num">45分</td><td><strong><a href="#make">セットアップ</a> と 座学を並行</strong><br>インストールを走らせながら <a href="#basics">Webのしくみ</a> → <a href="#idea">アイデアの出し方</a> → <a href="#basics">APIと課金</a> を聞き、待ち時間でチームの方向性を決めます</td></tr>
+    <tr><td class="num">13:55</td><td class="num">10分</td><td><a href="#make">チーム開発の作法</a> → スタックと分担を決める</td></tr>
     <tr><td class="num">14:05</td><td class="num">55分</td><td><strong>開発(前半)</strong></td></tr>
     <tr><td class="num">15:00</td><td class="num">10分</td><td><strong>中間チェック &amp; 休憩</strong> — 各チーム1分で「今どこまで動いているか」</td></tr>
     <tr><td class="num">15:10</td><td class="num">30分</td><td><strong>開発(後半)</strong> — 残り時間から逆算して機能を削る</td></tr>
@@ -53,10 +51,10 @@
   <div class="table-scroll">
   <table>
     <tr><th class="num">経過</th><th>話す内容</th><th>手を動かすこと</th></tr>
-    <tr><td class="num">0〜3分</td><td>—</td><td><a href="#setup">セットアップ</a> <strong>Step 1(インストール)</strong> を走らせる</td></tr>
-    <tr><td class="num">3〜13分</td><td><a href="#web">Webのしくみ</a> — HTML / CSS / JavaScript と URL</td><td rowspan="3">インストールを回しながら聞く。<br>終わった人は Step 2〜3(キー設定・疎通確認)へ進んでよい</td></tr>
+    <tr><td class="num">0〜3分</td><td>—</td><td><a href="#make">セットアップ</a> <strong>Step 1(インストール)</strong> を走らせる</td></tr>
+    <tr><td class="num">3〜13分</td><td><a href="#basics">Webのしくみ</a> — HTML / CSS / JavaScript と URL</td><td rowspan="3">インストールを回しながら聞く。<br>終わった人は Step 2〜3(キー設定・疎通確認)へ進んでよい</td></tr>
     <tr><td class="num">13〜28分</td><td><a href="#idea">アイデアの出し方</a> — ペルソナ / 課題 / 市場調査 / MVP</td></tr>
-    <tr><td class="num">28〜35分</td><td><a href="#api">APIと課金</a> — キーを外に出してはいけない理由</td></tr>
+    <tr><td class="num">28〜35分</td><td><a href="#basics">APIと課金</a> — キーを外に出してはいけない理由</td></tr>
     <tr><td class="num">35〜45分</td><td>—</td><td>チームでアイデアを決める + 各自セットアップを完了させる</td></tr>
   </table>
   </div>
@@ -68,14 +66,14 @@
 </section>
 </div>
 
-<!-- ============================== Webのしくみ ============================== -->
-<div role="tabpanel" id="panel-web" aria-labelledby="tab-web" hidden>
+<!-- ============================== WebとAPIのしくみ ============================== -->
+<div role="tabpanel" id="panel-basics" aria-labelledby="tab-basics" hidden>
 <section>
   <h2>Webのしくみ</h2>
 
-  <p>今日作るのはWebページです。Claude Code が書いたコードを読むとき、<strong>どのファイルが何を担当しているか</strong>が分かっていると、指示がぐっと的確になります。まずそこだけ押さえます。</p>
+  <p>今日作るのは、<strong>ブラウザだけで動く小さなWebページ</strong>です。Claude Code が書いたコードを読むとき、どのファイルが何を担当しているかが分かっていると、指示がぐっと的確になります。まずそこだけ押さえます。</p>
 
-  <h3>Webページは3つの部品でできている</h3>
+  <h3>ブラウザが受け取るのは、結局この3つ</h3>
 
   <div class="cards3">
     <div>
@@ -100,6 +98,8 @@
 
   <div class="note"><b>家にたとえると</b><strong>HTML</strong> が間取りと壁、<strong>CSS</strong> が内装と色、<strong>JavaScript</strong> が電気やスイッチ。HTMLだけでも家として成立しますが、CSSがないと真っ白で、JSがないとスイッチが効きません。</div>
 
+  <div class="warn-box"><b>「Webページ = この3ファイル」ではありません</b>実際の開発では React や Next.js のようなフレームワークを使い、これらは<strong>自動生成される</strong>ことのほうが多いです(サークルの通常開発もそちら)。サーバー側でHTMLを組み立てて返す作り方もあります。<br>ただし<strong>どの作り方をしても、最後にブラウザが受け取るのは HTML / CSS / JavaScript</strong> という点は変わりません。今日はその中間層を省いて、3つを直接書きます。<strong>ここが分かっていれば、フレームワークを使い始めたときも「結局これが生成されている」と読み替えられます。</strong></div>
+
   <h3>同じボタンを、3段階で作ってみる</h3>
 
   <p><strong>① HTML だけ</strong> — ボタンは出るが、飾りっ気がなく押しても何も起きない。</p>
@@ -118,7 +118,7 @@
   alert("投稿しました");
 });</code></pre>
 
-  <p>この3つは<strong>別々のファイルに分けても、1つのファイルにまとめても動きます</strong>。今日はチームで分担するので、機能ごとにファイルを分けます(<a href="#team">チーム開発の作法</a>)。</p>
+  <p>この3つは<strong>別々のファイルに分けても、1つのファイルにまとめても動きます</strong>。今日はチームで分担するので、機能ごとにファイルを分けます(<a href="#make">セットアップと開発</a>タブの「チーム開発の作法」)。</p>
 
   <h3>ブラウザは上から順に読んでいるだけ</h3>
 
@@ -145,7 +145,7 @@
     </div>
   </div>
 
-  <p>だから<strong>ブラウザで <code>index.html</code> を開くだけでページは動きます</strong>。今日はサーバーもビルドも要りません。ファイルを保存して、ブラウザを再読み込みするだけです。</p>
+  <p>だから<strong>今日の構成なら、ブラウザで <code>index.html</code> を開くだけでページは動きます</strong>。サーバーもビルドも要りません。ファイルを保存して、ブラウザを再読み込みするだけです(フレームワークを使う場合は、この前にビルドという変換工程が挟まります)。</p>
 
   <div class="note"><b>デバッグの入口</b>思ったとおりに動かないときは、ブラウザで<strong>右クリック → 検証</strong>(または F12)を開いてください。<strong>Console</strong> タブにJavaScriptのエラーが赤字で出ています。<strong>そのエラー文をそのまま Claude Code に貼るのが一番速い直し方</strong>です。</div>
 
@@ -176,9 +176,92 @@
   <div class="note"><b>まとめ</b>
     <ul>
       <li><strong>HTML</strong> = 何があるか / <strong>CSS</strong> = どう見えるか / <strong>JavaScript</strong> = どう動くか</li>
-      <li>ブラウザは上から順に読んで実行しているだけ。<code>index.html</code> を開けば動く</li>
+      <li>フレームワークを使っても、<strong>ブラウザが最後に受け取るのはこの3つ</strong>。今日は直接書くだけ</li>
+      <li>ブラウザは上から順に読んで実行しているだけ。今日の構成なら <code>index.html</code> を開けば動く</li>
       <li>動かないときは<strong>検証 → Console のエラーを Claude Code に貼る</strong></li>
       <li>URL は <strong>スキーム / ホスト / パス / クエリ / フラグメント</strong> でできている</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>APIと課金の仕組み</h2>
+
+  <p>今日は「APIキー」を配られました。これが何で、なぜ人に見せてはいけないのか、そしてなぜ使うほどお金がかかるのかを押さえておきます。<strong>自分たちのアプリで外部サービスを使うときにも、そのまま効く話</strong>です。</p>
+
+  <h3>API =「他人が作った機能を、自分のプログラムから呼ぶ窓口」</h3>
+
+  <p>人間がブラウザで使う画面がある一方で、<strong>プログラムから呼ぶための入口</strong>が別に用意されていることがあります。それが API です。</p>
+
+  <div class="flow">
+    <div class="flow-step">
+      <div class="n">1</div>
+      <h4>リクエスト</h4>
+      <p>自分のプログラムが「これして」と送る。ここにAPIキーを添える</p>
+    </div>
+    <div class="flow-step">
+      <div class="n">2</div>
+      <h4>認証</h4>
+      <p>相手のサーバーがキーを見て「誰の依頼か」を確認する</p>
+    </div>
+    <div class="flow-step">
+      <div class="n">3</div>
+      <h4>処理</h4>
+      <p>相手のサーバーが実行する。自分のPCではない</p>
+    </div>
+    <div class="flow-step">
+      <div class="n">4</div>
+      <h4>レスポンス + 記録</h4>
+      <p>結果が返る。同時に「誰がどれだけ使ったか」が記録される</p>
+    </div>
+  </div>
+
+  <div class="note"><b>APIキー = 会員証 兼 請求書の宛名</b>キーは「誰が呼んだか」を示すものです。つまり<strong>キーを持っている人は、あなたの名前で使えて、あなたに請求が飛びます</strong>。パスワードと同じ扱いをしてください。</div>
+
+  <h3>サブスクと従量課金の違い</h3>
+
+  <div class="table-scroll">
+  <table>
+    <tr><th></th><th>サブスク(Claude Pro / Max など)</th><th>API(従量課金)</th></tr>
+    <tr><td>支払い</td><td>月額固定。使っても使わなくても同じ</td><td>使った分だけ。使わなければ $0</td></tr>
+    <tr><td>使いすぎたら</td><td>一定時間使えなくなる。追加請求はない</td><td>そのぶん金額が増える。上限は自分で設定する</td></tr>
+    <tr><td>誰が使う想定</td><td>人間が画面から使う</td><td>プログラムから呼ぶ</td></tr>
+    <tr><td>向いているもの</td><td>毎日たくさん使う個人</td><td>自分のアプリに組み込む / チームで配る</td></tr>
+  </table>
+  </div>
+
+  <p>Claude Code は<strong>どちらでも動きます</strong>。今日は全員に同じ環境を用意するためにAPIキー方式にしています。一方で、<strong>自分が作ったアプリからAIや外部サービスを呼ぶときは、ほぼ必ずAPIキー方式</strong>になります。</p>
+
+  <h3>トークンと料金:なぜ会話が長いと高くなるのか</h3>
+
+  <p>AIのAPIは「文字数」ではなく<strong>トークン</strong>という単位で数えます。日本語ならおおよそ1文字が1トークン前後です。</p>
+
+  <ul>
+    <li><strong>入力トークン</strong>(こちらが送った分)と<strong>出力トークン</strong>(返ってきた分)で単価が違い、出力のほうが高い</li>
+    <li>AIは会話を覚えていないので、<strong>毎回これまでの会話全部を送り直しています</strong>。だから会話が長くなるほど1回あたりの入力が増える</li>
+    <li>同じ内容を繰り返し送る部分は割引される仕組み(キャッシュ)があるので、実際の請求は素直な掛け算より安くなります</li>
+  </ul>
+
+  <div class="note"><b>だから <code>/clear</code> が効く</b>話題が大きく変わったら <code>/clear</code> で履歴をリセットすると、送り直す量が減って安く・速くなります。逆に、関係ない長い会話を引きずったまま作業を続けるのが一番もったいないパターンです。<code>/cost</code> で今いくら使ったかをいつでも確認できます。</div>
+
+  <h3>自分たちのアプリでAPIを使うときの注意</h3>
+
+  <div class="crit-box"><b>APIキーをフロントエンドのコードに書かない</b>ブラウザで動くJavaScriptに書いたキーは、<strong>ページを開いた全員に丸見え</strong>です(検証ツールで誰でも読めます)。「見えないところに置いたつもり」でも、ブラウザに届いた時点で公開されています。</div>
+
+  <p>キーを安全に使うには、キーを持つサーバーを自分側に用意して、ブラウザ → 自分のサーバー → 外部API と中継する必要があります。<strong>今日はそこまで作る時間はありません。</strong>なので、外部APIを使いたい場合は次のどちらかにしてください。</p>
+
+  <ul>
+    <li><strong>キーが要らない公開APIを選ぶ</strong> — 天気、路線、公共データなど。今日はこちらを強く推奨</li>
+    <li><strong>そもそも外部APIを使わない</strong> — データはブラウザに保存(localStorage)するだけでも、ちゃんと動くものは作れます</li>
+  </ul>
+
+  <div class="note"><b>まとめ</b>
+    <ul>
+      <li><strong>API</strong> — プログラムから機能を呼ぶ窓口。処理は相手のサーバーで動く</li>
+      <li><strong>APIキー</strong> — 会員証であり請求書の宛名。漏れたら他人が自分の名前で使える</li>
+      <li><strong>サブスク vs 従量課金</strong> — 月額固定か、使った分だけか。アプリに組み込むなら後者</li>
+      <li><strong>トークン</strong> — 会話全部が毎回送られる。長引くほど高い。<code>/clear</code> と <code>/cost</code> を使う</li>
+      <li><strong>フロントにキーを書かない</strong> — ブラウザに届いた時点で公開。今日はキー不要のAPIを選ぶ</li>
     </ul>
   </div>
 </section>
@@ -346,8 +429,8 @@
 </section>
 </div>
 
-<!-- ============================== セットアップ ============================== -->
-<div role="tabpanel" id="panel-setup" aria-labelledby="tab-setup" hidden>
+<!-- ============================== セットアップと開発 ============================== -->
+<div role="tabpanel" id="panel-make" aria-labelledby="tab-make" hidden>
 <section>
   <h2>セットアップ</h2>
 
@@ -367,7 +450,7 @@
     <li>そのターミナルで、下の Step 1〜3 をそのまま実行する</li>
   </ol>
 
-  <p>左のファイル一覧が Claude Code の作業に合わせて増えていくので、<a href="#web">HTML / CSS / JS の役割</a>が実物で確認できます。<code>index.html</code> を右クリック → ブラウザで開けば、その場で動作確認もできます。</p>
+  <p>左のファイル一覧が Claude Code の作業に合わせて増えていくので、<a href="#basics">HTML / CSS / JS の役割</a>を実物で確認できます。<code>index.html</code> を右クリック → ブラウザで開けば、その場で動作確認もできます。</p>
 
   <div class="warn-box"><b>Windows(WSL)の人はフォルダの開き方に注意</b>VS Code に <strong>WSL 拡張</strong>を入れ、左下の緑のボタンから <strong>「WSL への接続」→ WSL 側のフォルダを開く</strong>てください。Windows 側(<code>C:\</code> 配下)のフォルダを開くと、動作が極端に遅くなったり <code>claude</code> が見つからなかったりします。左下に <code>WSL: Ubuntu</code> と出ていれば正解です。</div>
 
@@ -428,7 +511,7 @@ claude</code></pre>
       <li>スクリーンショット・配信画面に写さない</li>
       <li>チーム外に共有しない</li>
     </ul>
-    なぜこれが大事なのかは<a href="#api">APIと課金</a>を読むと腑に落ちます。
+    なぜこれが大事なのかは<a href="#basics">WebとAPIのしくみ</a>タブの「APIと課金の仕組み」を読むと腑に落ちます。
   </div>
 
   <ul>
@@ -436,95 +519,7 @@ claude</code></pre>
     <li>途中で応答が返ってこなくなったら、運営に声をかけてください。</li>
   </ul>
 </section>
-</div>
 
-<!-- ============================== APIと課金 ============================== -->
-<div role="tabpanel" id="panel-api" aria-labelledby="tab-api" hidden>
-<section>
-  <h2>APIと課金の仕組み</h2>
-
-  <p>今日は「APIキー」を配られました。これが何で、なぜ人に見せてはいけないのか、そしてなぜ使うほどお金がかかるのかを押さえておきます。<strong>自分たちのアプリで外部サービスを使うときにも、そのまま効く話</strong>です。</p>
-
-  <h3>API =「他人が作った機能を、自分のプログラムから呼ぶ窓口」</h3>
-
-  <p>人間がブラウザで使う画面がある一方で、<strong>プログラムから呼ぶための入口</strong>が別に用意されていることがあります。それが API です。</p>
-
-  <div class="flow">
-    <div class="flow-step">
-      <div class="n">1</div>
-      <h4>リクエスト</h4>
-      <p>自分のプログラムが「これして」と送る。ここにAPIキーを添える</p>
-    </div>
-    <div class="flow-step">
-      <div class="n">2</div>
-      <h4>認証</h4>
-      <p>相手のサーバーがキーを見て「誰の依頼か」を確認する</p>
-    </div>
-    <div class="flow-step">
-      <div class="n">3</div>
-      <h4>処理</h4>
-      <p>相手のサーバーが実行する。自分のPCではない</p>
-    </div>
-    <div class="flow-step">
-      <div class="n">4</div>
-      <h4>レスポンス + 記録</h4>
-      <p>結果が返る。同時に「誰がどれだけ使ったか」が記録される</p>
-    </div>
-  </div>
-
-  <div class="note"><b>APIキー = 会員証 兼 請求書の宛名</b>キーは「誰が呼んだか」を示すものです。つまり<strong>キーを持っている人は、あなたの名前で使えて、あなたに請求が飛びます</strong>。パスワードと同じ扱いをしてください。</div>
-
-  <h3>サブスクと従量課金の違い</h3>
-
-  <div class="table-scroll">
-  <table>
-    <tr><th></th><th>サブスク(Claude Pro / Max など)</th><th>API(従量課金)</th></tr>
-    <tr><td>支払い</td><td>月額固定。使っても使わなくても同じ</td><td>使った分だけ。使わなければ $0</td></tr>
-    <tr><td>使いすぎたら</td><td>一定時間使えなくなる。追加請求はない</td><td>そのぶん金額が増える。上限は自分で設定する</td></tr>
-    <tr><td>誰が使う想定</td><td>人間が画面から使う</td><td>プログラムから呼ぶ</td></tr>
-    <tr><td>向いているもの</td><td>毎日たくさん使う個人</td><td>自分のアプリに組み込む / チームで配る</td></tr>
-  </table>
-  </div>
-
-  <p>Claude Code は<strong>どちらでも動きます</strong>。今日は全員に同じ環境を用意するためにAPIキー方式にしています。一方で、<strong>自分が作ったアプリからAIや外部サービスを呼ぶときは、ほぼ必ずAPIキー方式</strong>になります。</p>
-
-  <h3>トークンと料金:なぜ会話が長いと高くなるのか</h3>
-
-  <p>AIのAPIは「文字数」ではなく<strong>トークン</strong>という単位で数えます。日本語ならおおよそ1文字が1トークン前後です。</p>
-
-  <ul>
-    <li><strong>入力トークン</strong>(こちらが送った分)と<strong>出力トークン</strong>(返ってきた分)で単価が違い、出力のほうが高い</li>
-    <li>AIは会話を覚えていないので、<strong>毎回これまでの会話全部を送り直しています</strong>。だから会話が長くなるほど1回あたりの入力が増える</li>
-    <li>同じ内容を繰り返し送る部分は割引される仕組み(キャッシュ)があるので、実際の請求は素直な掛け算より安くなります</li>
-  </ul>
-
-  <div class="note"><b>だから <code>/clear</code> が効く</b>話題が大きく変わったら <code>/clear</code> で履歴をリセットすると、送り直す量が減って安く・速くなります。逆に、関係ない長い会話を引きずったまま作業を続けるのが一番もったいないパターンです。<code>/cost</code> で今いくら使ったかをいつでも確認できます。</div>
-
-  <h3>自分たちのアプリでAPIを使うときの注意</h3>
-
-  <div class="crit-box"><b>APIキーをフロントエンドのコードに書かない</b>ブラウザで動くJavaScriptに書いたキーは、<strong>ページを開いた全員に丸見え</strong>です(検証ツールで誰でも読めます)。「見えないところに置いたつもり」でも、ブラウザに届いた時点で公開されています。</div>
-
-  <p>キーを安全に使うには、キーを持つサーバーを自分側に用意して、ブラウザ → 自分のサーバー → 外部API と中継する必要があります。<strong>今日はそこまで作る時間はありません。</strong>なので、外部APIを使いたい場合は次のどちらかにしてください。</p>
-
-  <ul>
-    <li><strong>キーが要らない公開APIを選ぶ</strong> — 天気、路線、公共データなど。今日はこちらを強く推奨</li>
-    <li><strong>そもそも外部APIを使わない</strong> — データはブラウザに保存(localStorage)するだけでも、ちゃんと動くものは作れます</li>
-  </ul>
-
-  <div class="note"><b>まとめ</b>
-    <ul>
-      <li><strong>API</strong> — プログラムから機能を呼ぶ窓口。処理は相手のサーバーで動く</li>
-      <li><strong>APIキー</strong> — 会員証であり請求書の宛名。漏れたら他人が自分の名前で使える</li>
-      <li><strong>サブスク vs 従量課金</strong> — 月額固定か、使った分だけか。アプリに組み込むなら後者</li>
-      <li><strong>トークン</strong> — 会話全部が毎回送られる。長引くほど高い。<code>/clear</code> と <code>/cost</code> を使う</li>
-      <li><strong>フロントにキーを書かない</strong> — ブラウザに届いた時点で公開。今日はキー不要のAPIを選ぶ</li>
-    </ul>
-  </div>
-</section>
-</div>
-
-<!-- ============================== チーム開発の作法 ============================== -->
-<div role="tabpanel" id="panel-team" aria-labelledby="tab-team" hidden>
 <section>
   <h2>チーム開発の作法</h2>
 
@@ -546,7 +541,7 @@ claude</code></pre>
 
   <div class="note"><b>チーム全員が Next.js に慣れている場合は使ってOK</b>その場合、下の「機能で分ける」考え方はそのまま使えます。<code>app/</code> 配下をページ / コンポーネント単位で分担してください。ただし<strong>環境構築で15分以上溶けたら素のHTMLに切り替える</strong>と最初に決めておくのがおすすめです。</div>
 
-  <div class="warn-box"><b>外部APIを使うなら</b>APIキーが必要なAPIは、フロントだけでは安全に使えません(<a href="#api">APIと課金</a>参照)。今日は<strong>キーの要らない公開API</strong>を選ぶか、外部APIを使わない構成にしてください。</div>
+  <div class="warn-box"><b>外部APIを使うなら</b>APIキーが必要なAPIは、フロントだけでは安全に使えません(<a href="#basics">WebとAPIのしくみ</a>タブ参照)。今日は<strong>キーの要らない公開API</strong>を選ぶか、外部APIを使わない構成にしてください。</div>
 
   <h2>コンフリクトしない作法</h2>
 
@@ -651,7 +646,7 @@ git checkout --theirs index.html   <span class="c"># 相手の版を採用</span
     <tr><td>VS Code を開き直したらキーが効かない</td><td>環境変数はターミナルを閉じると消えます。統合ターミナルでもう一度 <code>export ANTHROPIC_API_KEY="..."</code> を実行</td></tr>
     <tr><td>WSL で VS Code の動作が異常に遅い</td><td>Windows 側のフォルダを開いています。左下の緑ボタンから WSL 側のフォルダを開き直す(左下が <code>WSL: Ubuntu</code> になっていればOK)</td></tr>
     <tr><td>WSL で <code>curl: command not found</code></td><td><code>sudo apt update &amp;&amp; sudo apt install -y curl</code> を先に実行</td></tr>
-    <tr><td>応答が遅い・高い気がする</td><td>会話が長くなっているかもしれません。<code>/clear</code> で履歴をリセット(<a href="#api">理由</a>)。<code>/cost</code> で消費を確認</td></tr>
+    <tr><td>応答が遅い・高い気がする</td><td>会話が長くなっているかもしれません。<code>/clear</code> で履歴をリセット(<a href="#basics">理由</a>)。<code>/cost</code> で消費を確認</td></tr>
     <tr><td>環境構築が終わらない</td><td>フレームワークを使っている場合は、素の HTML / CSS / JS に切り替える判断を早めに</td></tr>
     <tr><td>コンフリクトが解決できない</td><td>5分かけずに <code>git merge --abort</code> で戻し、Claude Code にやり直させる</td></tr>
     <tr><td>アイデアが決まらない</td><td><a href="#idea">アイデアの出し方</a>末尾の「アイデアが出ないときの型」を回す。それでも決まらなければ運営に相談</td></tr>
