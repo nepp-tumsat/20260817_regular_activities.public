@@ -42,6 +42,7 @@
     <tr><td class="num">15:10</td><td class="num">30分</td><td><strong>開発(後半)</strong> — 残り時間から逆算して機能を削る</td></tr>
     <tr><td class="num">15:40</td><td class="num">12分</td><td>成果シェア — 1チーム3分</td></tr>
     <tr><td class="num">15:52</td><td class="num">8分</td><td>クロージング・アンケート</td></tr>
+    <tr><td class="num">16:00</td><td class="num">—</td><td>終了</td></tr>
   </table>
   </div>
 
@@ -200,11 +201,11 @@
     <div class="seg"><code>https://</code><span class="lab"><b>スキーム</b>取りに行く方法。<br>s = 通信が暗号化されている</span></div>
     <div class="seg"><code>nepp-tumsat.github.io</code><span class="lab"><b>ホスト</b>どのサーバーか。<br>いわば住所</span></div>
     <div class="seg"><code>/20260817_regular_activities.public/</code><span class="lab"><b>パス</b>サーバーの中のどこか。<br>フォルダとファイルの場所</span></div>
-    <div class="seg"><code>?q=lunch</code><span class="lab"><b>クエリ</b>付け足しの情報。<br>検索語や条件を渡す</span></div>
+    <div class="seg"><code>?q=lunch</code><span class="lab"><b>クエリ</b>付け足しの情報。<br>検索語や条件を渡す<br>(このページには付いていません)</span></div>
     <div class="seg"><code>#web</code><span class="lab"><b>フラグメント</b>ページ内のどこか。<br>サーバーには送られない</span></div>
   </div>
 
-  <p>いま見ているこのページも同じ構造です。タブを切り替えると末尾の <code>#web</code> の部分が変わりますが、<strong>ページ自体は読み込み直されていません</strong>。フラグメントはサーバーに送られず、ブラウザの中だけで使われるからです。</p>
+  <p>ホストとパスは、いま見ているこのページの実物です(クエリだけ例として足しています)。タブを切り替えると末尾の <code>#web</code> の部分が変わりますが、<strong>ページ自体は読み込み直されていません</strong>。フラグメントはサーバーに送られず、ブラウザの中だけで使われるからです。</p>
 
   <div class="table-scroll">
   <table>
@@ -444,7 +445,7 @@
     </div>
     <div class="after">
       <b>✓ MVP(スケボー)</b>
-      「今空いてる?」ボタンを押すと、<strong>直近15分に投稿された状況が一覧で出る</strong>。投稿は「空いてる / 混んでる」の2択ボタンだけ。<br>それだけ。
+      「空いてる / 混んでる」の2択ボタンを押すと記録され、<strong>直近15分の記録が一覧で出る</strong>。<br>それだけ。
     </div>
   </div>
 
@@ -486,7 +487,7 @@
 
   <p>チームに配られたAPIキーで Claude Code を使えるようにします。所要5分。<strong>Step 1 のインストールは時間がかかるので、先に走らせてから話を聞いてください。</strong></p>
 
-  <div class="note"><b>個人で Claude Pro / Max を契約済みの人へ</b>普段の自分のログインのまま参加してOKです。この手順は不要なので、<a href="#idea">アイデアの出し方</a>へ進んでください。</div>
+  <div class="note"><b>個人で Claude Pro / Max を契約済みの人へ</b>普段の自分のログインのまま参加してOKです。キーの受け取りと Step 2 は不要なので、このタブ後半の<strong>「チーム開発の作法」</strong>へ進んでください。</div>
 
   <div class="note"><b>作業環境</b>macOS のターミナル、または Windows の <strong>WSL</strong>(Ubuntu など)で作業します。Windows の人は <strong>PowerShell やコマンドプロンプトではなく WSL のターミナルを開いてください</strong>。WSL がまだ入っていない人は導入に時間がかかるので、運営に声をかけてください。</div>
 
@@ -502,7 +503,7 @@
 
   <p>左のファイル一覧が Claude Code の作業に合わせて増えていくので、<a href="#web">HTML / CSS / JS の役割</a>を実物で確認できます。<code>index.html</code> を右クリック → ブラウザで開けば、その場で動作確認もできます。</p>
 
-  <div class="warn-box"><b>Windows(WSL)の人はフォルダの開き方に注意</b>VS Code に <strong>WSL 拡張</strong>を入れ、左下の緑のボタンから <strong>「WSL への接続」→ WSL 側のフォルダを開く</strong>てください。Windows 側(<code>C:\</code> 配下)のフォルダを開くと、動作が極端に遅くなったり <code>claude</code> が見つからなかったりします。左下に <code>WSL: Ubuntu</code> と出ていれば正解です。</div>
+  <div class="warn-box"><b>Windows(WSL)の人はフォルダの開き方に注意</b>VS Code に <strong>WSL 拡張</strong>を入れ、左下の緑のボタンから <strong>「WSL への接続」→ WSL 側のフォルダを開いてください</strong>。Windows 側(<code>C:\</code> 配下)のフォルダを開くと、動作が極端に遅くなったり <code>claude</code> が見つからなかったりします。左下に <code>WSL: Ubuntu</code> と出ていれば正解です。</div>
 
   <div class="note"><b>拡張機能は今日は不要</b>Claude Code の VS Code 拡張もありますが、今日は<strong>統合ターミナルで十分</strong>です。APIキーを環境変数で渡す都合上、ターミナルから起動するほうがトラブりません。</div>
 
@@ -593,11 +594,57 @@ claude</code></pre>
 
   <div class="warn-box"><b>外部APIを使うなら</b>APIキーが必要なAPIは、フロントエンドだけでは安全に使えません(<a href="#api">APIと課金</a>タブ参照)。今日は<strong>キーの要らない公開API</strong>を選ぶか、外部APIを使わない構成にしてください。</div>
 
+  <h3>1. Git と GitHub のしくみ</h3>
+
+  <p>4人で1つのものを作るので、コードを共有する仕組みが要ります。それが Git と GitHub です。</p>
+
+  <div class="fb">
+    <div class="fb-side front">
+      <div class="fb-head">💻 手元(ローカル)<span>= 自分のPCの中</span></div>
+      <ul>
+        <li>ファイルを編集する場所</li>
+        <li><code>commit</code> で変更を履歴に記録</li>
+        <li><strong>ここだけでは誰にも見えない</strong></li>
+      </ul>
+    </div>
+    <div class="fb-link">
+      <span class="wire">GIT</span>
+      <span>push →</span>
+      <span>← clone / pull</span>
+    </div>
+    <div class="fb-side back">
+      <div class="fb-head">☁️ GitHub(リモート)<span>= チーム共有の置き場</span></div>
+      <ul>
+        <li>全員の変更が集まる場所</li>
+        <li>ここにあるものが「チームの正」</li>
+        <li>他の人はここ経由で受け取る</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>覚える操作は4つだけです。</p>
+
+  <div class="table-scroll">
+  <table>
+    <tr><th>操作</th><th>いつ</th><th>何が起きるか</th></tr>
+    <tr><td><code>clone</code></td><td>最初の1回だけ</td><td>GitHub にあるものを手元にまるごとコピーする</td></tr>
+    <tr><td><code>pull</code></td><td><strong>作業を始める前に必ず</strong></td><td>他の人が push した変更を手元に取り込む</td></tr>
+    <tr><td><code>commit</code></td><td>区切りがついたら</td><td>手元の変更を履歴に記録する(<strong>まだ誰にも共有されない</strong>)</td></tr>
+    <tr><td><code>push</code></td><td>記録したら</td><td>手元の履歴を GitHub へ送る = チームに共有される</td></tr>
+  </table>
+  </div>
+
+  <div class="note"><b>いちばん誤解されるところ</b><code>commit</code> は「手元のセーブ」です。<strong><code>push</code> して初めてチームに届きます。</strong> 逆に、他の人の変更は <code>pull</code> しないと手元には来ません。「共有されているつもり」で作業を続けるのが、コンフリクトが大きく育つ一番の原因です。</div>
+
+  <div class="crit-box"><b>リポジトリの用意と招待は、各チームの上級生がやります</b>GitHub でのリポジトリ作成・メンバー招待・最初の雛形 push は上級生に任せてください。<strong>招待が届いたら承諾して、<code>clone</code> するところから参加します。</strong><br><br><code>push</code> には <strong>GitHub の認証</strong>が必要です。ここは初めてだとほぼ確実に一度は詰まるところなので、<strong>聞かれたり弾かれたりしたら自分で調べずに上級生を呼んでください。</strong>10分粘って直らなければ、その人はペア相手のマシンで作業します — 認証の解決に開発時間を使うのが一番もったいないです。</div>
+
+  <div class="note"><b>上級生向け:認証がまだの人の最短ルート</b>GitHub CLI が入っていれば <code>gh auth login</code> が最短です(ブラウザにコードを入力するだけで、トークンのコピペが要りません)。<code>gh</code> が無い場合、当日は SSH 鍵を作るより <strong>HTTPS + Personal Access Token</strong> のほうが速いことが多いです。あわせて <code>git config --global user.name</code> / <code>user.email</code> が設定済みかも確認してください(未設定だと最初の <code>commit</code> で止まります)。<br><strong>いずれにせよ10分を超えたら、ペア相手のマシンに寄せる判断を優先してください。</strong></div>
+
   <h2>コンフリクトしない作法</h2>
 
   <p>4人で同じリポジトリを触ると、必ず「他の人の変更と衝突した」が起きます。<strong>衝突を上手に直す方法ではなく、そもそも衝突しない配置にする方法</strong>をまとめます。</p>
 
-  <h3>1. 2人1組 × 2台で、担当は「機能」で切る</h3>
+  <h3>2. 2人1組 × 2台で、担当は「機能」で切る</h3>
 
   <p>1人が Claude Code に指示を出し、もう1人が結果を見て次の指示を考える。初めてなら4人バラバラより速く、学びも大きいです。</p>
 
@@ -612,9 +659,9 @@ claude</code></pre>
 
   <p>レイヤーで分けると、HTMLができるまでCSSが書けず、<strong>お互いの完成待ちになります</strong>。機能で分ければ、それぞれが最後まで動くものを作れます。Claude Code も「投稿ボタンを作って」の1発でHTML/CSS/JSを横断して書いてくれるので、そのほうが自然です。</p>
 
-  <h3>2. 最初の5分は1人だけが動く</h3>
+  <h3>3. 最初の5分は1人だけが動く</h3>
 
-  <p>空のリポジトリに全員が同時に push すると即事故ります。</p>
+  <p>空のリポジトリに全員が同時に push すると即事故ります。<strong>ここは上級生が先に済ませてくれているはずなので、その場合は <code>clone</code> から始めてください。</strong></p>
 
   <ol>
     <li><strong>1人が雛形を作って push</strong> — 機能ごとにファイルを分けておくのがポイント</li>
@@ -631,7 +678,7 @@ features/list.js   + list.css      <span class="c">← ペアB</span></code></pr
 
   <p>各ペアは自分のJSからこの差し込み口に描画するだけになります。</p>
 
-  <h3>3. Claude Code に担当外を触らせない</h3>
+  <h3>4. Claude Code に担当外を触らせない</h3>
 
   <div class="warn-box"><b>ここが今日いちばん効くポイント</b>Claude Code は放っておくと関係ないファイルまで整形・リファクタします。つまり<strong>AIが勝手に他の人の担当ファイルを書き換えてコンフリクトを作ります</strong>。</div>
 
@@ -651,7 +698,7 @@ features/list.js   + list.css      <span class="c">← ペアB</span></code></pr
 - index.html は変更しない(差し込み口は確定済み)
 - CSSのクラス名は機能名をプレフィックスにする(post-btn など)</code></pre>
 
-  <h3>4. 小さく、頻繁に</h3>
+  <h3>5. 小さく、頻繁に</h3>
 
   <p>15分に1回は push。溜めるほど解決が大変になります。</p>
 
@@ -660,7 +707,7 @@ features/list.js   + list.css      <span class="c">← ペアB</span></code></pr
 git add -A &amp;&amp; git commit -m "投稿ボタンを追加"
 git push</code></pre>
 
-  <h3>5. 詰まったら「直す」より「やり直す」</h3>
+  <h3>6. 詰まったら「直す」より「やり直す」</h3>
 
   <p>時間が限られているので、解決に5分かかりそうなコンフリクトは潔く捨てます。</p>
 
@@ -672,6 +719,7 @@ git checkout --theirs index.html   <span class="c"># 相手の版を採用</span
   <div class="note"><b>まとめ</b>
     <ul>
       <li><strong>スタック</strong> — 素の HTML / CSS / JS。ビルドなし。データは localStorage</li>
+      <li><strong>Git</strong> — <code>commit</code> は手元のセーブ、<code>push</code> で初めて共有。作業前に必ず <code>pull</code>。認証で詰まったら上級生へ</li>
       <li><strong>組み方</strong> — 2人1組 × 2台。担当は「機能」で切る(HTML担当・CSS担当にしない)</li>
       <li><strong>最初の5分</strong> — 1人が雛形を push → <code>index.html</code> に差し込み口を確定 → 全員 clone</li>
       <li><strong>Claude Code</strong> — 「このファイルだけ変更して。他は編集しないで」を毎回言う。指示は小さく。約束は <code>CLAUDE.md</code> に書く</li>
@@ -698,6 +746,9 @@ git checkout --theirs index.html   <span class="c"># 相手の版を採用</span
     <tr><td>WSL で <code>curl: command not found</code></td><td><code>sudo apt update &amp;&amp; sudo apt install -y curl</code> を先に実行</td></tr>
     <tr><td>応答が遅い・高い気がする</td><td>会話が長くなっているかもしれません。<code>/clear</code> で履歴をリセット(<a href="#api">理由</a>)。<code>/cost</code> で消費を確認</td></tr>
     <tr><td>環境構築が終わらない</td><td>フレームワークを使っている場合は、素の HTML / CSS / JS に切り替える判断を早めに</td></tr>
+    <tr><td><code>git push</code> で認証を聞かれる / 弾かれる</td><td>自分で調べずに<strong>上級生を呼ぶ</strong>。10分で直らなければ、その人はペア相手のマシンで作業する</td></tr>
+    <tr><td><code>Please tell me who you are</code></td><td>コミット者が未設定。<code>git config --global user.name "名前"</code> と <code>git config --global user.email "メール"</code></td></tr>
+    <tr><td>他の人の変更が手元に来ない</td><td><code>git pull --rebase</code> を実行。相手がまだ <code>push</code> していない可能性もあるので確認する</td></tr>
     <tr><td>コンフリクトが解決できない</td><td>5分かけずに <code>git merge --abort</code> で戻し、Claude Code にやり直させる</td></tr>
     <tr><td>アイデアが決まらない</td><td><a href="#idea">アイデアの出し方</a>末尾の「アイデアが出ないときの型」を回す。それでも決まらなければ運営に相談</td></tr>
     <tr><td>時間内に終わりそうにない</td><td>機能を削ってください。<a href="#idea">MVP</a>の考え方どおり、動く1画面が残っていれば成果です</td></tr>
