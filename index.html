@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Claude Code セットアップ手順 | 2026-08-17 定例活動</title>
-<meta name="description" content="チームに配られたAPIキーで Claude Code を使い始めるための手順(所要5分)">
+<title>AI駆動開発ハンズオン ハンドアウト | 2026-08-17 定例活動</title>
+<meta name="description" content="Claude Code を使って、チームで動くものを1つ作る。当日の流れ・セットアップ・チーム開発の作法をまとめたハンドアウト">
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>">
 <link rel="stylesheet" href="assets/style.css">
@@ -13,13 +13,37 @@
 <div class="wrap">
 
 <header class="doc">
-  <div class="kicker">2026-08-17 定例活動</div>
-  <h1>Claude Code セットアップ手順</h1>
-  <p class="lede">チームに配られたAPIキーで Claude Code を使えるようにします。所要5分。<br>個人で Claude Pro / Max を契約済みの人は、普段の自分のログインのまま参加してOKです(この手順は不要)。<br>後半に<strong>チーム開発でコンフリクトを避ける作法</strong>をまとめてあります。開発中に見返してください。</p>
+  <div class="kicker">2026-08-17 定例活動 — ハンドアウト</div>
+  <h1>AI駆動開発ハンズオン</h1>
+  <p class="lede">Claude Code を使って、チームで<strong>動くものを1つ</strong>作ります。<br>このページは今日1日ぶんのハンドアウトです。開発中も手元で開いておいてください。</p>
 </header>
 
 <section>
-  <div class="note"><b>作業環境</b>macOS のターミナル、または Windows の <strong>WSL</strong>(Ubuntu など)で作業します。Windows の人は <strong>PowerShell やコマンドプロンプトではなく WSL のターミナルを開いてください</strong>。WSL がまだ入っていない人は、導入に時間がかかるので<strong>当日までに済ませておいてください</strong>。</div>
+  <h2>今日の流れ</h2>
+  <div class="table-scroll">
+  <table>
+    <tr><th class="num">時刻</th><th>内容</th></tr>
+    <tr><td class="num">14:00</td><td>イントロ — 今日のゴールとお題の発表</td></tr>
+    <tr><td class="num">14:08</td><td>アイデアの出し方 → チームで方向性を決める</td></tr>
+    <tr><td class="num">14:20</td><td><a href="#setup">セットアップ</a> — Claude Code を動かせる状態にする</td></tr>
+    <tr><td class="num">14:38</td><td><a href="#teamwork">チーム開発の作法</a> → 分担を決める</td></tr>
+    <tr><td class="num">14:45</td><td><strong>開発(50分)</strong></td></tr>
+    <tr><td class="num">15:35</td><td>成果シェア — 1チーム3分</td></tr>
+    <tr><td class="num">15:50</td><td>クロージング・アンケート</td></tr>
+  </table>
+  </div>
+
+  <div class="note"><b>今日のゴール</b>きれいなコードを書くことでも、機能を全部作りきることでもありません。<strong>「AIに指示して動くものができた」を1回体験すること</strong>がゴールです。成果シェアでは「どう指示したら上手くいったか / 詰まったか」を話してもらいます。</div>
+</section>
+
+<section id="setup">
+  <h2>セットアップ</h2>
+
+  <p>チームに配られたAPIキーで Claude Code を使えるようにします。所要5分。</p>
+
+  <div class="note"><b>個人で Claude Pro / Max を契約済みの人へ</b>普段の自分のログインのまま参加してOKです。この手順は不要なので、飛ばして<a href="#teamwork">チーム開発の作法</a>へ進んでください。</div>
+
+  <div class="note"><b>作業環境</b>macOS のターミナル、または Windows の <strong>WSL</strong>(Ubuntu など)で作業します。Windows の人は <strong>PowerShell やコマンドプロンプトではなく WSL のターミナルを開いてください</strong>。WSL がまだ入っていない人は導入に時間がかかるので、運営に声をかけてください。</div>
 
   <ol class="steps">
 
@@ -53,22 +77,10 @@ claude</code></pre>
   </ol>
 </section>
 
-<section>
-  <h2>覚えておくと便利なコマンド</h2>
-  <div class="table-scroll">
-  <table>
-    <tr><th>コマンド</th><th>内容</th></tr>
-    <tr><td><code>/cost</code></td><td>このセッションで使った金額を確認</td></tr>
-    <tr><td><code>/model</code></td><td>使用モデルの切り替え</td></tr>
-    <tr><td><code>/clear</code></td><td>会話履歴をリセット(話題を大きく変えるとき)</td></tr>
-  </table>
-  </div>
-</section>
-
-<section>
+<section id="teamwork">
   <h2>チーム開発でコンフリクトしない作法</h2>
 
-  <p>4人で同じリポジトリを触ると、必ず「他の人の変更と衝突した」が起きます。開発時間は短いので、<strong>衝突を上手に直す方法ではなく、そもそも衝突しない配置にする方法</strong>をまとめます。</p>
+  <p>4人で同じリポジトリを触ると、必ず「他の人の変更と衝突した」が起きます。開発時間は50分しかないので、<strong>衝突を上手に直す方法ではなく、そもそも衝突しない配置にする方法</strong>をまとめます。</p>
 
   <h3>1. 2人1組 × 2台で、担当は「機能」で切る</h3>
 
@@ -153,6 +165,18 @@ git checkout --theirs index.html   <span class="c"># 相手の版を採用</span
 </section>
 
 <section>
+  <h2>覚えておくと便利なコマンド</h2>
+  <div class="table-scroll">
+  <table>
+    <tr><th>コマンド</th><th>内容</th></tr>
+    <tr><td><code>/cost</code></td><td>このセッションで使った金額を確認</td></tr>
+    <tr><td><code>/model</code></td><td>使用モデルの切り替え</td></tr>
+    <tr><td><code>/clear</code></td><td>会話履歴をリセット(話題を大きく変えるとき)</td></tr>
+  </table>
+  </div>
+</section>
+
+<section>
   <h2>注意事項</h2>
 
   <div class="crit-box"><b>Consoleアカウントで「ログイン」しないでください</b>ログイン画面が出ても、Console(platform.claude.com)のアカウントでのサインインは選ばず、必ずAPIキー(環境変数)を使ってください。今日はチームに配られたキーで動かします。</div>
@@ -179,6 +203,7 @@ git checkout --theirs index.html   <span class="c"># 相手の版を採用</span
     <tr><td><code>claude: command not found</code></td><td>インストール直後はパスが通っていないことがあります。ターミナルを開き直してから再実行</td></tr>
     <tr><td>401 エラー(認証失敗)</td><td>キーの貼り間違い。前後の空白や欠けがないか確認して環境変数を再セット → <code>claude</code> を再起動</td></tr>
     <tr><td>429 エラーが頻発</td><td>チーム内でアクセスが集中しています。少し待つか運営に連絡</td></tr>
+    <tr><td>コンフリクトが解決できない</td><td>5分かけずに <code>git merge --abort</code> で戻し、Claude Code にやり直させる</td></tr>
     <tr><td>動かない・わからない</td><td>運営に声をかけてください</td></tr>
   </table>
   </div>
