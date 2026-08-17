@@ -15,7 +15,7 @@
 <header class="doc">
   <div class="kicker">2026-08-17 定例活動</div>
   <h1>Claude Code セットアップ手順</h1>
-  <p class="lede">チームに配られたAPIキーで Claude Code を使えるようにします。所要5分。<br>個人で Claude Pro / Max を契約済みの人は、普段の自分のログインのまま参加してOKです(この手順は不要)。</p>
+  <p class="lede">チームに配られたAPIキーで Claude Code を使えるようにします。所要5分。<br>個人で Claude Pro / Max を契約済みの人は、普段の自分のログインのまま参加してOKです(この手順は不要)。<br>後半に<strong>チーム開発でコンフリクトを避ける作法</strong>をまとめてあります。開発中に見返してください。</p>
 </header>
 
 <section>
@@ -62,6 +62,93 @@ claude</code></pre>
     <tr><td><code>/model</code></td><td>使用モデルの切り替え</td></tr>
     <tr><td><code>/clear</code></td><td>会話履歴をリセット(話題を大きく変えるとき)</td></tr>
   </table>
+  </div>
+</section>
+
+<section>
+  <h2>チーム開発でコンフリクトしない作法</h2>
+
+  <p>4人で同じリポジトリを触ると、必ず「他の人の変更と衝突した」が起きます。開発時間は短いので、<strong>衝突を上手に直す方法ではなく、そもそも衝突しない配置にする方法</strong>をまとめます。</p>
+
+  <h3>1. 2人1組 × 2台で、担当は「機能」で切る</h3>
+
+  <p>1人が Claude Code に指示を出し、もう1人が結果を見て次の指示を考える。初めてなら4人バラバラより速く、学びも大きいです。</p>
+
+  <p>担当は<strong>機能</strong>で分けます。「HTML担当・CSS担当」のようなレイヤーでは分けません。</p>
+
+  <div class="table-scroll">
+  <table>
+    <tr><th>✗ レイヤーで分ける</th><th>✓ 機能で分ける</th></tr>
+    <tr><td>ペアA: HTML<br>ペアB: CSS + JS</td><td>ペアA: 検索フォーム(HTML+CSS+JS 全部)<br>ペアB: 一覧表示(HTML+CSS+JS 全部)</td></tr>
+  </table>
+  </div>
+
+  <p>レイヤーで分けると、HTMLができるまでCSSが書けず、<strong>お互いの完成待ちになります</strong>。機能で分ければ、それぞれが最後まで動くものを作れます。Claude Code も「検索機能を作って」の1発でHTML/CSS/JSを横断して書いてくれるので、そのほうが自然です。</p>
+
+  <h3>2. 最初の5分は1人だけが動く</h3>
+
+  <p>空のリポジトリに全員が同時に push すると即事故ります。</p>
+
+  <ol>
+    <li><strong>1人が雛形を作って push</strong> — 機能ごとにファイルを分けておくのがポイント</li>
+    <li><strong><code>index.html</code> に機能ごとの差し込み口を先に確定させる</strong> — これで以降 <code>index.html</code> を誰も触らずに済みます</li>
+    <li><strong>全員が clone してから分担開始</strong></li>
+  </ol>
+
+<pre><code>index.html                         <span class="c">← 器。差し込み口を置いたら以降さわらない</span>
+features/search.js + search.css    <span class="c">← ペアA</span>
+features/list.js   + list.css      <span class="c">← ペアB</span></code></pre>
+
+<pre><code>&lt;div id="search"&gt;&lt;/div&gt;
+&lt;div id="list"&gt;&lt;/div&gt;</code></pre>
+
+  <p>各ペアは自分のJSからこの差し込み口に描画するだけになります。</p>
+
+  <h3>3. Claude Code に担当外を触らせない</h3>
+
+  <div class="warn-box"><b>ここが今日いちばん効くポイント</b>Claude Code は放っておくと関係ないファイルまで整形・リファクタします。つまり<strong>AIが勝手に他の人の担当ファイルを書き換えてコンフリクトを作ります</strong>。</div>
+
+  <p>毎回、触ってよいファイルを明示してください。</p>
+
+<pre><code>features/search.js と search.css だけを変更してください。
+他のファイルは読んでも構いませんが、編集はしないでください。</code></pre>
+
+  <p><strong>1回の指示は小さく。</strong> 大きな指示で複数ファイルを一気に書き換えさせるほど、衝突する面積が広がります。</p>
+
+  <p><strong>チームの約束は <code>CLAUDE.md</code> に書く。</strong> リポジトリ直下に置くと、チーム全員の Claude Code が同じ前提で動きます。</p>
+
+<pre><code># チームの約束
+- 担当: ペアA=features/search.* / ペアB=features/list.*
+- 担当外のファイルは編集しない
+- index.html は変更しない(差し込み口は確定済み)
+- CSSのクラス名は機能名をプレフィックスにする(search-form など)</code></pre>
+
+  <h3>4. 小さく、頻繁に</h3>
+
+  <p>15分に1回は push。溜めるほど解決が大変になります。</p>
+
+<pre><code>git pull --rebase              <span class="c"># 作業を始める前に必ず</span>
+<span class="c"># ...作業...</span>
+git add -A &amp;&amp; git commit -m "検索フォームを追加"
+git push</code></pre>
+
+  <h3>5. 詰まったら「直す」より「やり直す」</h3>
+
+  <p>時間が限られているので、解決に5分かかりそうなコンフリクトは潔く捨てます。</p>
+
+<pre><code>git merge --abort                  <span class="c"># とりあえず元に戻す</span>
+git checkout --theirs index.html   <span class="c"># 相手の版を採用</span></code></pre>
+
+  <p>そのうえで<strong>自分の変更内容を Claude Code にもう一度やらせる</strong>。手で直すより速いです。</p>
+
+  <div class="note"><b>まとめ</b>
+    <ul>
+      <li><strong>組み方</strong> — 2人1組 × 2台。担当は「機能」で切る(HTML担当・CSS担当にしない)</li>
+      <li><strong>最初の5分</strong> — 1人が雛形を push → <code>index.html</code> に差し込み口を確定 → 全員 clone</li>
+      <li><strong>Claude Code</strong> — 「このファイルだけ変更して。他は編集しないで」を毎回言う。指示は小さく。約束は <code>CLAUDE.md</code> に書く</li>
+      <li><strong>動かし方</strong> — 作業前に <code>git pull --rebase</code>、15分に1回 push</li>
+      <li><strong>詰まったら</strong> — 5分で直らないコンフリクトは捨てて、Claude Code にやり直させる</li>
+    </ul>
   </div>
 </section>
 
